@@ -1,4 +1,6 @@
 import random
+import os
+os.environ['TK_SILENCE_DEPRECATION'] = '1'
 import tkinter as tk
 
 window = tk.Tk()
