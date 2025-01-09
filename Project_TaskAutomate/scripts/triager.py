@@ -2,6 +2,8 @@ import re
 import tarfile
 import tkinter as tk
 from tkinter import filedialog, messagebox
+import os
+os.environ['TK_SILENCE_DEPRECATION'] = '1'
 
 # Define the files to be triaged for each category
 CATEGORY_FILES = {
