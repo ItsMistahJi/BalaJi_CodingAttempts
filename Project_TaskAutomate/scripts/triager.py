@@ -37,16 +37,16 @@ def triage_logs():
             category_window.destroy()
             category = selected_category.get()
             files_to_check = CATEGORY_FILES[category]
-            process_tar_file(file_path, files_to_check)
+            process_tar_file(file_path, files_to_check, root)
 
         tk.Button(category_window, text="Select", command=on_category_select).pack()
         category_window.mainloop()
     else:
         with open(file_path, 'r') as log_file:
             logs = log_file.readlines()
-            process_logs(logs)
+            process_logs(logs, root)
 
-def process_tar_file(file_path, files_to_check):
+def process_tar_file(file_path, files_to_check, root):
     mode = 'r:gz' if file_path.endswith('.tgz') else 'r'
     with tarfile.open(file_path, mode) as tar:
         members = tar.getmembers()
@@ -61,9 +61,9 @@ def process_tar_file(file_path, files_to_check):
             with tar.extractfile(member) as log_file:
                 logs.extend(log_file.read().decode('utf-8').splitlines())
 
-        process_logs(logs, filtered_members)
+        process_logs(logs, root, filtered_members)
 
-def process_logs(logs, filtered_members=None):
+def process_logs(logs, root, filtered_members=None):
     error_logs = [line for line in logs if re.search(r'(ERROR|CRITICAL)', line, re.IGNORECASE)]
     
     result_message = f"Found {len(error_logs)} critical issues."
@@ -81,7 +81,12 @@ def process_logs(logs, filtered_members=None):
         messagebox.showinfo("Clipboard", "Results copied to clipboard!")
 
     tk.Button(result_window, text="Copy to Clipboard", command=copy_to_clipboard).pack()
-    tk.Button(result_window, text="Close", command=result_window.destroy).pack()
+    
+    def close_window():
+        result_window.destroy()
+        root.quit()  # Terminate the Tkinter main loop
+
+    tk.Button(result_window, text="Close", command=close_window).pack()
 
     result_window.mainloop()
 
