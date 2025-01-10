@@ -93,4 +93,7 @@ def process_logs(logs, root, filtered_members=None):
     result_window.mainloop()
 
 if __name__ == "__main__":
-    triage_logs()
+    root = tk.Tk()
+    root.withdraw()  # Hide the root window
+    triage_logs(root)
+    root.mainloop()  # Start the Tkinter main loop
