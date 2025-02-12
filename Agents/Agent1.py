@@ -1,17 +1,16 @@
-//Agent to respond to random queries
-
 import openai
 
 # Set up your OpenAI API key
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = "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"
 
 def ai_agent(prompt):
     """Simple AI agent that uses OpenAI GPT to answer a question."""
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",  # You can use "gpt-3.5-turbo" if you prefer
+            model="tts-1",  # You can use "gpt-3.5-turbo" if you prefer
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=200  # Limit the length of the response
+            max_tokens=10,
+            temperature=0.5  # Limit the length of the response
         )
         # Extract and return the response from the AI
         answer = response.choices[0].message['content']
