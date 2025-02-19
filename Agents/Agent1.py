@@ -7,7 +7,7 @@ def ai_agent(prompt):
     """Simple AI agent that uses OpenAI GPT to answer a question."""
     try:
         response = openai.ChatCompletion.create(
-            model="tts-1",  # You can use "gpt-3.5-turbo" if you prefer
+            model="gpt-4",  # You can use "gpt-3.5-turbo" if you prefer
             messages=[{"role": "user", "content": prompt}],
             max_tokens=10,
             temperature=0.5  # Limit the length of the response
