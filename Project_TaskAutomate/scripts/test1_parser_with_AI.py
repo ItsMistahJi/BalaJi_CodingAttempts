@@ -8,10 +8,17 @@ import openai
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QPushButton, QTextEdit, QVBoxLayout, QFileDialog, QLabel, QLineEdit
 )
+from dotenv import load_dotenv
+#openai.api_key_path = r'C:\Users\BRU09\OneDrive - Sky\Documents\Personal\Learning\2025_Learning\Python-mini-projects\python-mini-project\CodingAttempts\Project_TaskAutomate\venv\Scripts\ini.env'
+openai.api_key = "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"
+
+#load_dotenv()  # Load environment variables from .env file
+#openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def extract_logs_from_archive(archive_path):
     """
     Extracts text files from tar, zip archives and returns their contents as a string.
+    Handles "0 file" types as well.
     """
     extracted_text = ""
     temp_dir = tempfile.mkdtemp()
@@ -23,18 +30,21 @@ def extract_logs_from_archive(archive_path):
         with tarfile.open(archive_path, 'r') as tar_ref:
             tar_ref.extractall(temp_dir)
     
-    # Read extracted text files
+    # Read extracted text files including "0 file" types
     for root, _, files in os.walk(temp_dir):
         for file in files:
-            if file.endswith(".txt"):
-                with open(os.path.join(root, file), 'r', encoding='utf-8', errors='ignore') as f:
+            file_path = os.path.join(root, file)
+            try:
+                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                     extracted_text += f.read() + "\n"
+            except Exception as e:
+                print(f"Skipping file {file_path}: {e}")
     
     return extracted_text
 
 def parse_logs(log_content):
     """
-    Parses log files and extracts ERROR and WARN level logs.
+    Parses log files and extracts ERROR level logs.
     """
     extracted_logs = []
     pattern = r"(\d{6}-\d{2}:\d{2}:\d{2}\.\d+) \[mod=(.*?), lvl=(ERROR)\] \[tid=(\d+)\] (.*)"
@@ -152,8 +162,9 @@ class LogParserUI(QWidget):
             summary, description = refine_summary_and_description(self.log_content)
             self.result_area.setText(f"Summary:\n{summary}\n\nDescription:\n{description}")
 
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = LogParserUI()
     window.show()
-    sys.exit(app.exec_())
+sys.exit(app.exec_())
