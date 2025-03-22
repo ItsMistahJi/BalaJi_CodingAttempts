@@ -1,0 +1,31 @@
+# This consists of the list of tools that I need to access based on the need.
+
+#Tools list
+RDK portal
+CI Xconf
+RDK analytics portal UK/Europe
+RDK analytics portal US
+TARDIS
+CATS portal
+CATS Inventory portal
+CATS FLexipool reserve
+TARDIS
+Automatics
+Vinyl tool for DNS
+Moba Xterm for serial access
+Git for reverse ssh
+CMD for ORCUS + Rpi port
+Rpi access via MobaXterm
+
+#################
+JIRA links for tickets to projects
+SKYH4
+SHARMAN
+RDKB
+CATR
+TCXB7
+TCXB8
+TCCBR
+TCCBRv2
+XER10
+
