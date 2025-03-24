@@ -1,1 +1,1 @@
-print "Hello, VS Code!"
+print ("Hello, VS Code")
