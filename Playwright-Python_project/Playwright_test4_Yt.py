@@ -44,7 +44,7 @@ def main():
             #print confirmation
             print("page loaded")
             #take screenshot
-            page.screenshot(path="screenshot1_yt.png")
+            page.screenshot(path=r"C:\Users\BRU09\OneDrive - Sky\Documents\Personal\Learning\2025_Learning\Python-mini-projects\python-mini-project\CodingAttempts\Playwright-Python_project\screenshot1_yt.png")
 
         else:
             #print error
