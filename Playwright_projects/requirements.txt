@@ -1,0 +1,5 @@
+# Add your dependencies here, e.g.,numpy==1.18.5
+pytest
+playwright
+pytest-playwright
+playwright install
