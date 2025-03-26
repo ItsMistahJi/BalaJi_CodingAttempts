@@ -1,1 +1,7 @@
 # Add your dependencies here, e.g.,numpy==1.18.5
+re
+pandas
+tkinter
+brew install python-tk
+PyQt5
+sys
