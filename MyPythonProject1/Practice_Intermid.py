@@ -99,8 +99,9 @@ def main():
     print(sq1.caculate_area())
     print(rec1.caculate_area())
 
-main()'''
+main()
 
+##My attempt at creating a class and inheriting it
 class numbers():
     #print("inside class numbers")
 
@@ -146,4 +147,96 @@ def main():
     even1.check_even()
     prime1.check_prime()
 
+main() 
+
+##################################################################################
+# #My attempt at creating a class and inheriting it
+class cars():
+    def __init__(self,name):
+        self.name = name
+
+class fuel(cars):
+    def __init__(self,name):
+        super().__init__(name)
+        self.fuelType = {"Petrol", "diesel"}
+
+class electric(cars):
+    def __init__(self,name):
+        super().__init__(name)
+        self.fuleType = {"electric","hybrid"}
+
+def main():
+    name= input("Enter a car name:")
+    runson = input("Enter the fule it runs on:")
+    if runson == "petrol" or runson == "diesel":
+        fuel1 = fuel(name)
+        print(fuel1.name)
+    elif runson == "electric" or runson == "hybrid":
+        electric1 = electric(name)
+        print(electric1.name)
+    else:
+        print("Invalid input: please enter petrol, diesel, electric or hybrid")
+
+main() '''
+
+######################################################################################
+#try and except
+'''try:
+    #info = "inside try"
+    4/0
+    #print(name)
+except NameError:
+    print("NameError: name is not defined")
+except ZeroDivisionError as z:
+    print("ZeroDivisionError: division by zero ",z)
+except:
+    print("inside except")
+
+class cheeseError(Exception):
+    pass
+
+def upper_fun(word):
+    if len(word) <=0:
+        raise cheeseError("Word is empty")
+    return word.upper()
+
+print(upper_fun("hello"))
+print(upper_fun("")) 
+
+#attempt1
+try:
+    num = int(input("Enter a number: "))
+    print(num)
+except ValueError:
+    print("ValueError: invalid literal for int() with base 10")
+
+class thathu(Exception):
+    info = "inside class thathu"
+
+def check_num(num):
+    if num < 0:
+        raise thathu("Number is negative")
+    return num
+
+print(check_num(1))
+#print(num)'''
+######################################################################################
+
+class Student():
+    scores = [65,75,85,95]
+
+    def __init__(self):
+        pass
+
+    def average_score(self):
+        total=0
+        for i in self.scores:
+            total += i 
+        return total / len(self.scores)
+
+def main():
+    student = Student().average_score()
+    print(f"Average score is {student}")
+
 main()
+
