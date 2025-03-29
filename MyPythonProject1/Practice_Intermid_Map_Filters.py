@@ -92,4 +92,6 @@ class Student:
 students = [Student("Joe", 0.46), Student("Amy", 0.72), Student("Mark", 0.88), Student("Zach", 0.75), Student("Jane", 0.84), Student("Sarah", 0.63), Student("Mary", 0.55)]
 
 names_with_M = list(filter(lambda student:student.name.startswith("M"),students))
+names_with_M1 = list(filter(lambda student:student.name[0] == "M",students))
 print(names_with_M)
+print(names_with_M1)
