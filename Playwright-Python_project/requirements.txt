@@ -1,4 +1,5 @@
-# Add your dependencies here, e.g.,numpy==1.18.5
-pytest
-pytest-playwright
-playwright install
+certifi==2025.1.31
+charset-normalizer==3.4.1
+idna==3.10
+requests==2.32.3
+urllib3==2.3.0
