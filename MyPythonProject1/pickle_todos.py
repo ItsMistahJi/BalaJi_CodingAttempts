@@ -1,13 +1,24 @@
+#pickle_ToDo
+#Failed to revisit time to time
 #To Do application by fetching arguments and adding it to a file
 #option to remove
 import sys
+import pickle
 todolist=[]
+file_name="pickletest.txt"
 #provide options
 
 #Read a file
-file=open("test.txt","r")
-todolist=file.readlines()
-file.close()
+try:
+    #file=open("test.txt","r")
+    file=open(file_name,"rb")
+    #todolist=file.readlines()
+    todolist=pickle.load(file)
+    file.close()
+except FileNotFoundError:
+    print(f"{file_name} is not found")
+except (EOFError,pickle.UnpicklingError) as e:
+    print(f"Error: {e}")
 
 #add to Do
 try:
@@ -31,9 +42,15 @@ except Exception as ArgumentsError:
     print("check the menu")
 
 #Write , save and close
-file=open("test.txt","w")
-file.writelines(todolist)
-file.close()
+try:
+    #file=open("test.txt","w")
+    file=open(file_name,"wb")
+    #file.writelines(todolist)
+    pickle.dump(todolist,file)
+    file.close()
+except Exception as e:
+    print(f"Error: {e}")
+
 
 #Print the rules
 print("#######################################")
