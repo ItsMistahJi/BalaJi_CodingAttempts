@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +20,11 @@
     </header>
 
     <main>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <section id="about">
             <h2>About Me</h2>
-            <img src="your-image.jpg" alt="Your Image" class="profile-pic">
+            <img src = "{% static 'about_me.jpeg' %}" alt="Your image" class="profile-pic">
+            <!--img src="about_me.jpeg" alt="Your Image" class="profile-pic"-->
             <p>
                 <!-- Add your bio here -->
                 A passionate QA Engineer with a strong focus on ensuring high-quality software.
@@ -42,7 +45,19 @@
 
         <section id="projects">
             <h2>Projects</h2>
-            <div class="project">
+            {% for job in jobs %}
+                <div class="project">
+                    <h3>{{ job.title }}</h3>
+                    <p>{{ job.description }}</p>
+                    {% if job.link %}
+                        <a href="{{ job.link }}" target="_blank">View Project</a>
+                    {% endif %}
+                    {% if job.image %}
+                        <img src="{{ job.image.url }}"" alt="{{ job.title }}">
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <!--div class="project">
                 <h3>Project 1 Title</h3>
                 <p>Brief description of project and your role.</p>
                 <a href="#">View Project</a>
@@ -51,7 +66,7 @@
                 <h3>Project 2 Title</h3>
                 <p>Brief description of project and your role.</p>
                 <a href="#">View Project</a>
-            </div>
+            </div-->
             <!-- Add more projects -->
         </section>
 
@@ -64,7 +79,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Your Name</p>
+        <p>&copy; 2025 Balaji Rameshbabu</p>
     </footer>
 </body>
 </html>
