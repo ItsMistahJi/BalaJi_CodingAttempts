@@ -1,1 +1,6 @@
-# Add your dependencies here, e.g.,numpy==1.18.5
+requests
+random
+beautifulsoup4
+re
+functools
+sys
