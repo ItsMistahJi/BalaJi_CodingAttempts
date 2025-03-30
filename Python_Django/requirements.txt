@@ -1,0 +1,9 @@
+# Add your dependencies here, e.g.,numpy==1.18.5
+sys
+requests
+functools
+certifi==2025.1.31
+charset-normalizer==3.4.1
+idna==3.10
+urllib3==2.3.0
+Django
